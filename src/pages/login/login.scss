@@ -1,0 +1,36 @@
+page-login {
+
+    img.login_img {
+        padding-top: 181px;
+        padding-right: 130px;
+        padding-left: 130px;
+        padding-bottom: 5px;
+    }
+
+    .toolbar-title.toolbar-title-ios {
+        color: white;
+    }
+
+    button.login_button.disable-hover.button.button-md.button-default.button-default-md.button-block.button-block-md {
+        background-color: orange;
+        margin-top: 40px;
+        position: relative;
+    }
+
+    button.login_button.button.button-md.button-default.button-default-md.button-block.button-block-md {
+        margin-top: 25px;
+    }
+    
+    ion-label.check_name {
+        padding-top: 20px;
+    }
+
+    ion-checkbox.check_box {
+        padding-top: 20px;
+    }
+
+    
+
+
+
+}
