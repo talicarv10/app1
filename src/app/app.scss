@@ -14,3 +14,52 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.botao{
+    margin-top: 35px;
+    margin-bottom: 35px;
+}
+
+.botao3{
+    background-color: rgb(230, 19, 54);
+}
+
+.check_box{
+    margin-bottom: 35px;
+    margin-top: 35px;
+}
+
+.botaologin{
+    background-color: orange;
+}
+
+.item-md ion-avatar ion-img,
+.item-md ion-avatar img {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 70px;
+    height: 70px;
+}
+
+.namecard{
+    font-size: 13px;
+    display: inline;
+}
+
+.datacard{
+    display: inline;
+    padding-left: 100px;
+}
+
+.iconcamera{
+    padding-top: 30px;
+    font-size: 50px;
+    padding-left: 30px;
+  }
+
+.iconalbum{
+    padding-top: 30px;
+    font-size: 50px;
+    padding-left: 130px;
+    
+  }

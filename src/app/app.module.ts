@@ -8,23 +8,33 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPageModule } from '../pages/login/login.module';
-import { AppPageModule } from '../pages/app/app.module';
+import { PrincipalPageModule } from '../pages/principal/principal.module';
+import { MensagensPage } from '../pages/mensagens/mensagens';
+import { TitlepostPageModule } from '../pages/titlepost/titlepost.module';
+import { CameraPageModule } from '../pages/camera/camera.module';
+
+
+
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    MensagensPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     LoginPageModule,
-    AppPageModule
+    PrincipalPageModule,
+    TitlepostPageModule,
+    CameraPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    MensagensPage
   ],
   providers: [
     StatusBar,
