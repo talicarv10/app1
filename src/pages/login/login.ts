@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AppPage } from '../app/app';
+import { PrincipalPage } from '../principal/principal';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,8 +19,8 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  openApp(){
-    this.navCtrl.push(AppPage, {});    
+  openPrincipal(){
+    this.navCtrl.push(PrincipalPage, {});    
   }
 
   ionViewDidLoad() {

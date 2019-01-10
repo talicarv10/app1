@@ -5,10 +5,10 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-toolbar color="primary">
+  
+  <ion-navbar color="primary">
     <ion-title class="login_title">Meu App</ion-title>
-  </ion-toolbar>
+  </ion-navbar>
 
 </ion-header>
 
@@ -26,11 +26,11 @@
         <ion-input type="password"></ion-input>
       </ion-item>
 
-      <ion-item>
-        <ion-label class="check_name">Lembrar</ion-label>
-        <ion-checkbox class="check_box" color="dark" checked="true"></ion-checkbox>
+      <ion-item class="check_box">
+        <ion-label>Lembrar</ion-label>
+        <ion-checkbox color="dark" checked="true"></ion-checkbox>
       </ion-item>
 
-      <button ion-button block (click)="openApp()">LOGIN</button>
+      <button class="botaologin" ion-button block (click)="openPrincipal()">LOGIN</button>
 
 </ion-content>
