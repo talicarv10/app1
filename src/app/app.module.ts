@@ -12,6 +12,7 @@ import { PrincipalPageModule } from '../pages/principal/principal.module';
 import { MensagensPage } from '../pages/mensagens/mensagens';
 import { TitlepostPageModule } from '../pages/titlepost/titlepost.module';
 import { CameraPageModule } from '../pages/camera/camera.module';
+import { DetailsPageModule } from '../pages/details/details.module';
 
 
 
@@ -28,7 +29,8 @@ import { CameraPageModule } from '../pages/camera/camera.module';
     LoginPageModule,
     PrincipalPageModule,
     TitlepostPageModule,
-    CameraPageModule
+    CameraPageModule,
+    DetailsPageModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

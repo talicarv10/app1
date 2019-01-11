@@ -15,6 +15,14 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+h1.maintext {
+    font-weight: bold;
+}
+
+.titlecard{
+    font-weight: bold;
+}
+
 .botao{
     margin-top: 35px;
     margin-bottom: 35px;
@@ -27,6 +35,7 @@
 .check_box{
     margin-bottom: 35px;
     margin-top: 35px;
+
 }
 
 .botaologin{
@@ -41,25 +50,47 @@
     height: 70px;
 }
 
-.namecard{
+.cardmain{
+    background-color: rgb(209, 202, 202);
+}
+
+
+.cardname{
     font-size: 13px;
     display: inline;
+    
 }
 
-.datacard{
+.carddate{
+    font-size: 13px;
     display: inline;
-    padding-left: 100px;
+    float: right;
+    
 }
 
-.iconcamera{
-    padding-top: 30px;
-    font-size: 50px;
-    padding-left: 30px;
+.carddate1{
+    font-size: 13px;
+    display: inline;
+
+}
+
+.cardhour{
+    font-size: 13px;
+    display: inline;
+    float: right;
+}
+
+.iconcam{
+    text-align: center;
+    margin-top: 20px;
   }
 
-.iconalbum{
-    padding-top: 30px;
-    font-size: 50px;
-    padding-left: 130px;
-    
+  .iconcamera{
+    font-size: 70px;
+    margin-right: 40px;
+  }
+
+  .iconalbum{
+    font-size: 70px;
+    margin-left: 40px;
   }
