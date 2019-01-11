@@ -15,10 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class MensagensPage {
   
-  searchQuery: string = '';
-  items: string[];
-
-
+  items;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.initializeItems();
@@ -27,19 +24,18 @@ export class MensagensPage {
 
   initializeItems() {
     this.items = [
-      '1 - mensagem um',
-      '2 - mensagem dois',
-      '3 - mensagem três',
-      '4 - mensagem quatro']
-    
+      'Lorena',
+      'Lucas',
+      'Ana',
+      'Júlia']  
   }
 
-  getItems(ev: any) {
+  getItems(ev) {
     // Reset items back to all of the items
     this.initializeItems();
 
     // set val to the value of the searchbar
-    const val = ev.target.value;
+    var val = ev.target.value;
 
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
