@@ -7,34 +7,24 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title class="principal_title">Meu App</ion-title>
+    <ion-title class="principal_title">SocialApp</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-  <ion-item>
+  
+  <ion-item no-lines>
       <ion-avatar (click)="openCamera()" item-start>
         <img src="assets/imgs/favicon.ico">
       </ion-avatar>
-      <h1 class="principal_text">Talita Carvalho</h1>
-      <h3 class="principal_subtext">talicarv</h3>
+      <h1 class="maintext">Talita Carvalho</h1>
+      <h3 class="subtext_main">talicarv</h3>
   </ion-item>
-  
-  <ion-card class="principal_card">
-    <ion-card-header>
-      Título
-    </ion-card-header>
-    <ion-card-content>
-      The British use the term "header", but the American term "head-shot" the English simply refuse to adopt.
-    </ion-card-content>
-    <ion-card-content>
-      <p class="namecard">Talita Carvalho</p>
-      <p class="datacard">10/01/2019</p>
-    </ion-card-content>
-  </ion-card>
 
+  <post [mainpost]="post0" (click)="openDetails()"></post> 
+  
   <button class="botao" ion-button block (click)="openMensagens()">MENSAGENS</button>
   <button class="botao" ion-button block (click)="openTitlepost()">POSTS</button>
   <button class="botao3" ion-button block (click)="openLogin()">LOGOUT</button>

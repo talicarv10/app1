@@ -4,6 +4,8 @@ import { MensagensPage } from '../mensagens/mensagens';
 import { TitlepostPage } from '../titlepost/titlepost';
 import { LoginPage } from '../login/login';
 import { CameraPage } from '../camera/camera';
+import { DetailsPage } from '../details/details';
+import { PostComponent } from '../../components/post/post';
 
 /**
  * Generated class for the AppPage page.
@@ -19,7 +21,17 @@ import { CameraPage } from '../camera/camera';
 })
 export class PrincipalPage {
 
+  post0;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  
+
+    this.post0 = {
+      title: "Férias de verão",
+      description: "Minhas férias de verão foram incríveis e blablabla, adorei!",
+      name: "Talita Carvalho",
+      date: new Date()
+    }
   }
 
   openMensagens(){
@@ -36,6 +48,10 @@ export class PrincipalPage {
 
   openCamera(){
     this.navCtrl.push(CameraPage, {});    
+  }
+
+  openDetails(){
+    this.navCtrl.push(DetailsPage, {});    
   }
 
   ionViewDidLoad() {
