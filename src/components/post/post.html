@@ -1,0 +1,14 @@
+<ion-card class="cardmain">
+    <ion-card-header class="titlecard">
+      {{mainpost.title}}
+    </ion-card-header>
+    <ion-card-content>
+      {{mainpost.description}}
+    </ion-card-content>
+    <ion-card-content>
+      <div class="footercard">
+          <h3 class="cardname">{{mainpost.name}}</h3>
+          <p class="carddate">{{mainpost.date | date: 'dd/MM/yyyy'}}</p>
+      </div>
+    </ion-card-content>
+  </ion-card>
