@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostComponent } from '../../components/post/post';
+import { Title } from '@angular/platform-browser';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 /**
  * Generated class for the TitlemsgPage page.
@@ -16,35 +18,33 @@ import { PostComponent } from '../../components/post/post';
 })
 export class TitlepostPage {
   
-  public post0 : Array<Object> = [];
+public posts : Array<any> = [];
  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
 
-    this.post0 = [
-
+    this.posts = [
       {
         title: "Férias de verão",
         description: "Minhas férias de verão foram incríveis e blablabla, adorei!",
         name: "Talita Carvalho",
         date: new Date()
       },
-
       {
         title: "Férias de inverno",
         description: "Minhas férias de inverno foram incríveis e blablabla, adorei!",
         name: "Lorena Lima",
         date: new Date()
       },
-
       {
-        title: "Férias de primavera",
-        description: "Minhas férias de primavera foram incríveis e blablabla, adorei!",
-        name: "Lucas Souza",
-        date: new Date()
-      }
-
+      title: "Férias de primavera",
+      description: "Minhas férias de primavera foram incríveis e blablabla, adorei!",
+      name: "Lucas Silva",
+      date: new Date()
+    }
     ]
+    
+    
   }
 
 

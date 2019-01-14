@@ -30,7 +30,7 @@ import { DetailsPageModule } from '../pages/details/details.module';
     PrincipalPageModule,
     TitlepostPageModule,
     CameraPageModule,
-    DetailsPageModule,
+    DetailsPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
