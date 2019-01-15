@@ -6,6 +6,10 @@ import { LoginPage } from '../login/login';
 import { CameraPage } from '../camera/camera';
 import { DetailsPage } from '../details/details';
 import { PostComponent } from '../../components/post/post';
+import { LastpostProvider } from '../../providers/lastpost/lastpost';
+import { executeViewHooks } from '@angular/core/src/render3/instructions';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the AppPage page.
@@ -18,20 +22,40 @@ import { PostComponent } from '../../components/post/post';
 @Component({
   selector: 'page-principal',
   templateUrl: 'principal.html',
+  providers: [
+    LastpostProvider
+  ]
 })
 export class PrincipalPage {
 
-  post0;
+  public post0: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
-  
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private lastPost: LastpostProvider,
+    public http: HttpClient) {
 
-    this.post0 = {
-      title: "Férias de verão",
-      description: "Minhas férias de verão foram incríveis e blablabla, adorei!",
-      name: "Talita Carvalho",
-      date: new Date()
+      this.post0 = {
+        titulo: "",
+        autor: "",
+        mensagem: "",
+        data: ""
+      }
+      
+
+      this.loadData();
+      
+    
+  }
+
+  loadData(){
+    let data: Observable<any>;
+    data = this.http.get("http://aulas.getsandbox.com/last_post");
+    data.subscribe (result =>{
+      this.post0 = result;
     }
+      )
   }
 
   openMensagens(){

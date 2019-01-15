@@ -4,6 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -13,6 +14,8 @@ import { MensagensPage } from '../pages/mensagens/mensagens';
 import { TitlepostPageModule } from '../pages/titlepost/titlepost.module';
 import { CameraPageModule } from '../pages/camera/camera.module';
 import { DetailsPageModule } from '../pages/details/details.module';
+import { LastpostProvider } from '../providers/lastpost/lastpost';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -30,7 +33,9 @@ import { DetailsPageModule } from '../pages/details/details.module';
     PrincipalPageModule,
     TitlepostPageModule,
     CameraPageModule,
-    DetailsPageModule
+    DetailsPageModule,
+    HttpModule,
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -41,7 +46,8 @@ import { DetailsPageModule } from '../pages/details/details.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    LastpostProvider
   ]
 })
 export class AppModule {}
