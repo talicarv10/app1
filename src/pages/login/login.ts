@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PrincipalPage } from '../principal/principal';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 /**
  * Generated class for the LoginPage page.
@@ -21,6 +22,8 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
+
+    
 
   openPrincipal(){
     this.navCtrl.push(PrincipalPage, {});    
