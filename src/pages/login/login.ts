@@ -16,6 +16,9 @@ import { PrincipalPage } from '../principal/principal';
 })
 export class LoginPage {
 
+  nome = '';
+  senha = '';
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

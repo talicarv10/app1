@@ -1,3 +1,5 @@
+
+
 <!--
   Generated template for the LoginPage page.
 
@@ -15,22 +17,23 @@
 
 <ion-content padding>
   <img class="login_img" src="assets/imgs/login.jpg">
-
-      <ion-item>
-        <ion-label floating>Usuário</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-    
-      <ion-item>
-        <ion-label class="login_senha" floating>Senha</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-
-      <ion-item no-lines class="check_box">
-        <ion-label>Lembrar</ion-label>
-        <ion-checkbox color="dark" checked="true"></ion-checkbox>
-      </ion-item>
-
-      <button class="botaologin" ion-button block (click)="openPrincipal()">LOGIN</button>
+        <ion-item>
+          <ion-label floating>Usuário</ion-label>
+          <ion-input type="text" [(ngModel)]="nome" maxlength="20"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label class="login_senha" floating>Senha</ion-label>
+          <ion-input type="password" [(ngModel)]="senha" maxlength="10"></ion-input>
+        </ion-item>
+  
+        <ion-item no-lines class="check_box">
+          <ion-label>Lembrar</ion-label>
+          <ion-checkbox color="dark" checked="true"></ion-checkbox>
+        </ion-item>
+  
+        <button class="botaologin" ion-button block (click)="openPrincipal()" [disabled]="nome.length < 3 || senha.length < 4">LOGIN</button>
+      
+      
 
 </ion-content>
