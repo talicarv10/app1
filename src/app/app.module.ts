@@ -13,7 +13,7 @@ import { MensagensPage } from '../pages/mensagens/mensagens';
 import { TitlepostPageModule } from '../pages/titlepost/titlepost.module';
 import { CameraPageModule } from '../pages/camera/camera.module';
 import { DetailsPageModule } from '../pages/details/details.module';
-
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 
 
@@ -41,6 +41,7 @@ import { DetailsPageModule } from '../pages/details/details.module';
   providers: [
     StatusBar,
     SplashScreen,
+    ScreenOrientation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
