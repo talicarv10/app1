@@ -3,8 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
-
 import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
@@ -52,8 +50,7 @@ import { RestProvider } from '../providers/rest/rest';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LastpostProvider,
-    RestProvider,
-    SecureStorage
+    RestProvider
   ]
 })
 export class AppModule {}
