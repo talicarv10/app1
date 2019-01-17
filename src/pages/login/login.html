@@ -20,21 +20,23 @@
       <form (ngSubmit)="saveUser()">
         <ion-item>
           <ion-label floating>Usuário</ion-label>
-          <ion-input type="text" (ngModel)="user.nome" name="nome"></ion-input>
-        </ion-item>
+          <ion-input type="text" (ngModel)="user.nome" name="nome" maxlength="20"></ion-input>
+        
       
         <ion-item>
           <ion-label class="login_senha" floating>Senha</ion-label>
-          <ion-input type="password" (ngModel)="user.senha" name="senha"></ion-input>
-        </ion-item>
-  
+
+          <ion-input type="tel" (ngModel)="user.senha" name="senha" maxlength="10" style="-webkit-text-security:disc;"></ion-input>
+        
         <ion-item no-lines class="check_box">
           <ion-label>Lembrar</ion-label>
           <ion-checkbox color="dark" checked="true"></ion-checkbox>
         </ion-item>
   
-        <button class="botaologin" ion-button block (click)="openPrincipal()">LOGIN</button>
+
+        <button class="botaologin" ion-button block (click)="openPrincipal()" [disabled]="nome.length < 3 || senha.length < 4">LOGIN</button>
       </form>
+
       
 
 </ion-content>

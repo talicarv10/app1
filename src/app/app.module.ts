@@ -16,6 +16,8 @@ import { DetailsPageModule } from '../pages/details/details.module';
 import { LastpostProvider } from '../providers/lastpost/lastpost';
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
+
 
 
 
@@ -48,9 +50,11 @@ import { RestProvider } from '../providers/rest/rest';
   providers: [
     StatusBar,
     SplashScreen,
+
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LastpostProvider,
-    RestProvider
+    RestProvider,
+    ScreenOrientation
   ]
 })
 export class AppModule {}

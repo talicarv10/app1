@@ -4,6 +4,7 @@ import { PrincipalPage } from '../principal/principal';
 import { RestProvider } from '../../providers/rest/rest';
 // import SHA_256 from 'sha256/lib/nodecrypto';
 //import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
+import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
 /**
  * Generated class for the LoginPage page.
@@ -21,6 +22,7 @@ import { RestProvider } from '../../providers/rest/rest';
   ]
 })
 export class LoginPage {
+
 
   user = { id:'', nome: '', senha:''};
 
@@ -83,7 +85,10 @@ export class LoginPage {
     }, (err) => { 
     console.log(err); 
     }); 
-    }
+      }
+
+
+    
 
   openPrincipal(){
     this.navCtrl.push(PrincipalPage, {});    
