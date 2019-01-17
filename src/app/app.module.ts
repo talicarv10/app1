@@ -3,6 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { SecureStorage, SecureStorageObject } from '@ionic-native/secure-storage';
 
 import { HttpModule } from '@angular/http';
 
@@ -16,6 +17,9 @@ import { CameraPageModule } from '../pages/camera/camera.module';
 import { DetailsPageModule } from '../pages/details/details.module';
 import { LastpostProvider } from '../providers/lastpost/lastpost';
 import { HttpClientModule } from '@angular/common/http';
+import { RestProvider } from '../providers/rest/rest';
+
+
 
 
 
@@ -47,7 +51,9 @@ import { HttpClientModule } from '@angular/common/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    LastpostProvider
+    LastpostProvider,
+    RestProvider,
+    SecureStorage
   ]
 })
 export class AppModule {}
