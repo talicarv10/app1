@@ -20,7 +20,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TitlepostPage {
 
-  user = this.navParams.get('user')
+ 
   
   public posts : Array<any> = [];
  

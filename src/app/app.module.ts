@@ -20,9 +20,9 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { ListmsgsProvider } from '../providers/listmsgs/listmsgs';
 import { DatePipe } from '@angular/common';
 import {registerLocaleData } from '@angular/common'; 
-import localeptBr from '@angular/common/locales/pt'; 
-registerLocaleData(localeptBr); 
-
+import ptBr from '@angular/common/locales/pt';
+import { LOCALE_ID } from '@angular/core';
+registerLocaleData(ptBr); 
 
 
 
@@ -53,7 +53,7 @@ registerLocaleData(localeptBr);
   providers: [
     StatusBar,
     SplashScreen,
-
+    {provide: LOCALE_ID, useValue: 'pt-BR'},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LastpostProvider,
     RestProvider,

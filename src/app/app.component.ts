@@ -18,6 +18,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.show();
       splashScreen.hide();
+      //screenOrientation.lock('portrait');
   
     });
   }

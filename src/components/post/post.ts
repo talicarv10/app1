@@ -31,7 +31,7 @@ export class PostComponent {
 
   ngOnInit(){
     this.data = this.datepipe.transform(this.mainpost.data,'dd/MM/yyyy');
-    this.mainpost.data = this.datepipe.transform(this.mainpost.data,'short');
+    this.mainpost.data = this.datepipe.transform(this.mainpost.data,'short', 'z');
   }
 }
 
