@@ -35,6 +35,8 @@ export class MensagensPage {
        (data) =>{
          this.list = data;
          this.items = this.list;
+         console.log('msg page:' + this.id);
+         console.log(this.list)
        }, error=>{
          console.log(error)
        }
@@ -56,5 +58,10 @@ export class MensagensPage {
       })
     }
   }
+
+  onClear($event){
+    this.list = this.items;
+  }
+
 }
 
