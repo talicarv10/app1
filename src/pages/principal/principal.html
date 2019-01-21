@@ -19,11 +19,15 @@
       <ion-avatar (click)="openCamera()" item-start>
         <img src="assets/imgs/favicon.ico">
       </ion-avatar>
-      <h1 class="maintext">Talita Carvalho</h1>
-      <h3 class="subtext_main">talicarv</h3>
-  </ion-item>
+      <div *ngIf = "user != null">
+        <h1 class="maintext">{{ user.nome }}</h1>
+        <h3 class="subtext_main">{{  user.login }}</h3>
 
-  <post [mainpost]="post0" (click)="openDetails()"></post> 
+      </div>
+        </ion-item>
+        <div *ngIf = "post0 != null">
+            <post [mainpost]="post0"></post> 
+        </div>
   
   <button class="botao" ion-button block (click)="openMensagens()">MENSAGENS</button>
   <button class="botao" ion-button block (click)="openTitlepost()">POSTS</button>

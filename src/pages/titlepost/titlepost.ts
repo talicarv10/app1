@@ -19,8 +19,10 @@ import { Observable } from 'rxjs/Observable';
   templateUrl: 'titlepost.html',
 })
 export class TitlepostPage {
+
+  user = this.navParams.get('user')
   
-public posts : Array<any> = [];
+  public posts : Array<any> = [];
  
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient) {

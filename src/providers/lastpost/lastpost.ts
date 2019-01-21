@@ -18,6 +18,7 @@ export class LastpostProvider {
 
 getLastpost(){
   return this.http.get(this.baseApiPath + "/last_post");
+  
 }
 
 }

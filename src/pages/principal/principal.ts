@@ -29,37 +29,29 @@ import { Observable } from 'rxjs/Observable';
 export class PrincipalPage {
 
   public post0: any;
+  user = this.navParams.get('user')
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private lastPost: LastpostProvider,
-    public http: HttpClient) {
-
-      this.post0 = {
-        titulo: "",
-        autor: "",
-        mensagem: "",
-        data: ""
-      }
-      
-
+    public http: HttpClient) {;
+    
       this.loadData();
-      
     
   }
 
   loadData(){
-    let data: Observable<any>;
-    data = this.http.get("http://aulas.getsandbox.com/last_post");
-    data.subscribe (result =>{
-      this.post0 = result;
-    }
-      )
-  }
+    this.lastPost.getLastpost().subscribe(
+      (data)=>{
+        this.post0 = data
+        console.log(this.post0);
+      }
+    )
+       }
 
   openMensagens(){
-    this.navCtrl.push(MensagensPage, {});    
+    this.navCtrl.push(MensagensPage, {'id': this.user.id});    
   }
 
   openTitlepost(){
@@ -74,12 +66,11 @@ export class PrincipalPage {
     this.navCtrl.push(CameraPage, {});    
   }
 
-  openDetails(){
-    this.navCtrl.push(DetailsPage, {});    
-  }
+ 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PrincipalPage');
+    
   }
 
 }

@@ -1,4 +1,4 @@
-<ion-card class="cardmain">
+<ion-card class="cardmain" (click)="openDetails()">
     <ion-card-header class="titlecard">
       {{mainpost.titulo}}
     </ion-card-header>
@@ -8,7 +8,7 @@
     <ion-card-content>
       <div class="footercard">
           <h3 class="cardname">{{mainpost.autor}}</h3>
-          <p class="carddate">{{mainpost.data}}</p>
+          <p class="carddate">{{data}}</p>
       </div>
     </ion-card-content>
   </ion-card>

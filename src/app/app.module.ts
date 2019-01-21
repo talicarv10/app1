@@ -17,8 +17,11 @@ import { LastpostProvider } from '../providers/lastpost/lastpost';
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
 import { ScreenOrientation } from '@ionic-native/screen-orientation';
-
-
+import { ListmsgsProvider } from '../providers/listmsgs/listmsgs';
+import { DatePipe } from '@angular/common';
+import {registerLocaleData } from '@angular/common'; 
+import localeptBr from '@angular/common/locales/pt'; 
+registerLocaleData(localeptBr); 
 
 
 
@@ -54,7 +57,10 @@ import { ScreenOrientation } from '@ionic-native/screen-orientation';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LastpostProvider,
     RestProvider,
-    ScreenOrientation
+    ScreenOrientation,
+    ListmsgsProvider,
+    DatePipe
+    
   ]
 })
 export class AppModule {}
