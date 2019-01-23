@@ -15,12 +15,39 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-h1.maintext {
-    font-weight: bold;
+ion-avatar.avatar1{
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    background-color: teal;
 }
+
+.avatarname{
+    height: 100%;
+    font-size: 40px;
+    line-height: 80px;
+    text-align: center;
+}
+
+p.maintext{
+    white-space: normal;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+}
+
+.toolbar-title.toolbar-title-md {
+    white-space: normal;
+}
+
+.subtext_main{
+    font-style: italic;
+}
+
 
 .titlecard{
     font-weight: bold;
+    white-space: normal;
 }
 
 .botao{
