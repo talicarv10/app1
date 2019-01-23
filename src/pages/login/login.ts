@@ -5,6 +5,7 @@ import { RestProvider } from '../../providers/rest/rest';
 import hasha from 'hasha';
 
 
+
 /**
  * Generated class for the LoginPage page.
  *
@@ -25,8 +26,14 @@ export class LoginPage {
   private resultado: string;
   public user = { nome: '', senha:''};
   dados;
+  
+ 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertCtrl: AlertController, public restProvider: RestProvider) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    private alertCtrl: AlertController, 
+    public restProvider: RestProvider) {
     
     
     
@@ -40,10 +47,18 @@ export class LoginPage {
     console.log('resultado = ', this.resultado);
 
   }
-    
-
-
   
+  formatar()
+    {
+       var login = this.user.senha;
+
+       if(this.user.senha != undefined){
+        login = login.replace(/\D/g, '');
+        this.user.senha = login;
+        console.log(this.user.senha);
+       }
+
+    }
     
 
   openPrincipal(){
@@ -63,7 +78,7 @@ export class LoginPage {
       }); 
 
     this.navCtrl.push(PrincipalPage, {});     
-     
+  
   }
 
   ionViewDidLoad() {

@@ -26,7 +26,7 @@
         <ion-item>
           <ion-label class="login_senha" floating>Senha</ion-label>
 
-          <ion-input type="tel" [(ngModel)]="user.senha" name="senha" maxlength="10" style="-webkit-text-security:disc;"></ion-input>
+          <ion-input type="tel" clearInput (keyup)="formatar()" maxlength="10" pattern="[0-9]" [(ngModel)]="user.senha" name="senha" style="-webkit-text-security:disc;"></ion-input>
           </ion-item>
         
         
