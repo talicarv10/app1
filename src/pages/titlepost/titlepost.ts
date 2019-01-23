@@ -42,7 +42,7 @@ export class TitlepostPage {
 
   loadData(){
     let data: Observable<any>;
-    data = this.http.get("http://aulas.getsandbox.com/posts");
+    data = this.http.get("http://aulas2.getsandbox.com/posts");
     data.subscribe (result =>{
       this.posts = result;
     }

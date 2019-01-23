@@ -13,7 +13,7 @@ export class ListmsgsProvider {
 
 
 
-  apiUrl = 'http://aulas.getsandbox.com';
+  apiUrl = 'http://aulas2.getsandbox.com';
 
   constructor(public http: HttpClient) {
     console.log('Hello ListmsgsProvider Provider');
