@@ -7,14 +7,14 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Férias de verão</ion-title>
+    <ion-title>{{post0.titulo}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-        <p> {{ post0.autor }} </p>
-        <p> {{ post0.data}} </p>
-        <p> {{ post0.mensagem}} </p>
+        <p> Autor: {{post0.autor }} </p>
+        <p> Publicação: {{ post0.data}} </p>
+        <p> Mensagem: {{ post0.mensagem}} </p>
 </ion-content>
