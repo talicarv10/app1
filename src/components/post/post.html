@@ -1,9 +1,9 @@
 <ion-card class="cardmain" (click)="openDetails()">
-    <ion-card-header class="titlecard">
+    <ion-card-content class="titlecard">
       {{mainpost.titulo}}
-    </ion-card-header>
+    </ion-card-content>
     <ion-card-content>
-      {{mainpost.mensagem}}
+      {{mainpost.mensagem | slice:0:60}}...
     </ion-card-content>
     <ion-card-content>
       <div class="footercard">
