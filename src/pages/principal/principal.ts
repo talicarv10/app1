@@ -29,48 +29,69 @@ import { Observable } from 'rxjs/Observable';
 export class PrincipalPage {
 
   public post0: any;
-  user = this.navParams.get('user')
+  user;
+  lastname: string;
+  name: string;
+  result: string;
+
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private lastPost: LastpostProvider,
-    public http: HttpClient) {;
+    public http: HttpClient) {
+    this.user = this.navParams.get('user');
+    this.loadData();
     
-      this.loadData();
+    if(this.user != null){
+      this.showNameAvatar();
+    }
     
+
   }
 
-  loadData(){
+  showNameAvatar() { 
+    
+    this.name = this.user.nome.charAt(0);
+    let sobrenome: string[] = this.user.nome.split(" ", 3);
+    this.lastname = sobrenome[2].charAt(0);
+    this.result = this.name.concat(this.lastname);
+    console.log(this.result);
+  }
+
+
+
+  loadData() {
     this.lastPost.getLastpost().subscribe(
-      (data)=>{
+      (data) => {
         this.post0 = data
         console.log(this.post0);
       }
     )
-       }
-
-  openMensagens(){
-    this.navCtrl.push(MensagensPage, {'id': this.user.id});    
   }
 
-  openTitlepost(){
-    this.navCtrl.push(TitlepostPage, {});    
+  
+  openMensagens() {
+    this.navCtrl.push(MensagensPage, { 'id': this.user.id });
   }
 
-  openLogin(){
-    this.navCtrl.push(LoginPage, {});    
+  openTitlepost() {
+    this.navCtrl.push(TitlepostPage, {});
   }
 
-  openCamera(){
-    this.navCtrl.push(CameraPage, {});    
+  openLogin() {
+    this.navCtrl.setRoot(LoginPage, {});
   }
 
- 
+  openCamera() {
+    this.navCtrl.push(CameraPage, {});
+  }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PrincipalPage');
-    
+
   }
 
 }

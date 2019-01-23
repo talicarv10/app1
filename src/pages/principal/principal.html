@@ -16,14 +16,22 @@
 <ion-content padding>
   
   <ion-item no-lines>
-      <ion-avatar (click)="openCamera()" item-start>
-        <img src="assets/imgs/favicon.ico">
+      <ion-avatar class="avatar1" (click)="openCamera()" item-start>
+        <div>
+          <div class="avatarname">{{ result }}</div>
+        </div>
       </ion-avatar>
-      <div *ngIf = "user != null">
-        <h1 class="maintext">{{ user.nome }}</h1>
-        <h3 class="subtext_main">{{  user.login }}</h3>
 
+        <div *ngIf = "user != null">
+          <p class="maintext">{{ user.nome }}</p>
+        </div>
+        
+
+
+      <div class="subtext_main" *ngIf = "user != null">
+        <h3>{{ user.login }}</h3>
       </div>
+
         </ion-item>
         <div *ngIf = "post0 != null">
             <post [mainpost]="post0"></post> 
