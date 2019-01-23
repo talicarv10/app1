@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPageModule } from '../pages/login/login.module';
@@ -59,7 +60,8 @@ registerLocaleData(ptBr);
     RestProvider,
     ScreenOrientation,
     ListmsgsProvider,
-    DatePipe
+    DatePipe,
+    Camera
     
   ]
 })

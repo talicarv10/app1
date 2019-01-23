@@ -20,6 +20,7 @@
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
+    "@ionic-native/camera": "^4.20.0",
     "@ionic-native/core": "~4.18.0",
     "@ionic-native/keyboard": "^4.19.0",
     "@ionic-native/screen-orientation": "^4.19.0",
@@ -31,6 +32,7 @@
     "angularfire2": "^5.1.1",
     "cordova-android": "6.3.0",
     "cordova-browser": "5.0.4",
+    "cordova-plugin-camera": "^4.0.3",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-ionic-keyboard": "^2.0.5",
     "cordova-plugin-ionic-webview": "^2.0.0",
@@ -71,7 +73,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "cordova-plugin-screen-orientation": {}
+      "cordova-plugin-screen-orientation": {},
+      "cordova-plugin-camera": {}
     },
     "platforms": [
       "browser",
