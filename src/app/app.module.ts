@@ -16,12 +16,12 @@ import { DetailsPageModule } from '../pages/details/details.module';
 import { LastpostProvider } from '../providers/lastpost/lastpost';
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { ListmsgsProvider } from '../providers/listmsgs/listmsgs';
 import { DatePipe } from '@angular/common';
 import {registerLocaleData } from '@angular/common'; 
 import ptBr from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
+import { CameraOriginal } from '@ionic-native/camera';
 registerLocaleData(ptBr); 
 
 
@@ -52,15 +52,14 @@ registerLocaleData(ptBr);
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, 
     {provide: LOCALE_ID, useValue: 'pt-BR'},
+    CameraOriginal,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LastpostProvider,
     RestProvider,
-    ScreenOrientation,
     ListmsgsProvider,
     DatePipe
-    
   ]
 })
 export class AppModule {}
