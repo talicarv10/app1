@@ -33,6 +33,7 @@ export class PrincipalPage {
   lastname: string;
   name: string;
   result: string;
+  foto;
 
 
   constructor(
@@ -42,13 +43,17 @@ export class PrincipalPage {
     public http: HttpClient) {
     this.user = this.navParams.get('user');
     this.loadData();
-    
+    if(this.foto != null){
+      this.foto = this.navParams.get('foto');
+    }
     if(this.user != null){
       this.showNameAvatar();
     }
     
 
   }
+
+  
 
   showNameAvatar() { 
     

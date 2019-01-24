@@ -69,8 +69,10 @@ p.maintext{
     background-color: orange;
 }
 
-.item-md ion-avatar ion-img,
-.item-md ion-avatar img {
+
+
+.item ion-avatar ion-img,
+.item ion-avatar img {
     border-radius: 50%;
     overflow: hidden;
     width: 70px;
@@ -110,7 +112,12 @@ p.maintext{
 .iconcam{
     text-align: center;
     margin-top: 20px;
+    color: white;
   }
+
+  button {
+    background: white;
+}
 
   .iconcamera{
     font-size: 70px;
