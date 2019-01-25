@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { PrincipalPage } from '../principal/principal';
+import { RestProvider } from '../../providers/rest/rest';
 
 /**
  * Generated class for the CameraPage page.
@@ -17,7 +18,7 @@ import { PrincipalPage } from '../principal/principal';
 })
 export class CameraPage {
   myphoto: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera, public restProvider: RestProvider) {
   }
 
   takePhoto(){
@@ -32,6 +33,7 @@ export class CameraPage {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.myphoto = 'data:image/jpeg;base64,' + imageData;
+     this.restProvider.setFotoAvatar(this.myphoto);
     }, (err) => {
      // Handle error
     });
@@ -44,19 +46,17 @@ export class CameraPage {
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
       saveToPhotoAlbum: false
     }
-    this.goToAvatar();
     this.camera.getPicture(options).then((imageData) => {
      // imageData is either a base64 encoded string or a file URI
      // If it's base64 (DATA_URL):
      this.myphoto = 'data:image/jpeg;base64,' + imageData;
+     this.restProvider.setFotoAvatar(this.myphoto);
     }, (err) => {
      // Handle error
     });
   }
 
-  goToAvatar(){
-    this.navCtrl.push(PrincipalPage, {'foto': this.myphoto});
-  }
+ 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CameraPage');

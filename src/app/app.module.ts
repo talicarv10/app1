@@ -24,6 +24,7 @@ import { DatePipe } from '@angular/common';
 import {registerLocaleData } from '@angular/common'; 
 import ptBr from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
+import { PhotoProvider } from '../providers/photo/photo';
 registerLocaleData(ptBr); 
 
 
@@ -61,7 +62,8 @@ registerLocaleData(ptBr);
     RestProvider,
     ScreenOrientation,
     ListmsgsProvider,
-    DatePipe
+    DatePipe,
+    PhotoProvider
   ]
 })
 export class AppModule {}

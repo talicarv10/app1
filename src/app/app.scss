@@ -15,18 +15,23 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
-ion-avatar.avatar1{
+.avatar1{
     width: 80px;
     height: 80px;
-    border-radius: 100px;
+    border-radius: 50px;
     background-color: teal;
+    text-align: center;
+}
+
+.scroll-content {
+    margin-top: 20px;
 }
 
 .avatarname{
     height: 100%;
     font-size: 40px;
     line-height: 80px;
-    text-align: center;
+    
 }
 
 p.maintext{
@@ -75,8 +80,8 @@ p.maintext{
 .item ion-avatar img {
     border-radius: 50%;
     overflow: hidden;
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
 }
 
 .cardmain{
