@@ -22,6 +22,7 @@ import { DatePipe } from '@angular/common';
 import {registerLocaleData } from '@angular/common'; 
 import ptBr from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
+import { SessionProvider } from '../providers/session/session';
 registerLocaleData(ptBr); 
 
 
@@ -59,7 +60,8 @@ registerLocaleData(ptBr);
     RestProvider,
     ScreenOrientation,
     ListmsgsProvider,
-    DatePipe
+    DatePipe,
+    SessionProvider
     
   ]
 })
