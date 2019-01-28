@@ -62,7 +62,7 @@ export class PrincipalPage {
 
 
   loadData() {
-    this.lastPost.getLastpost().subscribe(
+    this.lastPost.getLastpost().then(
       (data) => {
         this.post0 = data
         console.log(this.post0);

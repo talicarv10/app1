@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { ListmsgsProvider } from '../../providers/listmsgs/listmsgs';
 
 /**
@@ -21,17 +21,33 @@ export class MensagensPage {
   
   items;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public listMsgs: ListmsgsProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public listMsgs: ListmsgsProvider, public toastController: ToastController) {
     this.initializeItems();
+    if (this.list == null){
+      this.listmsgToast();
+    }
     
   }
 
-
+  async listmsgToast() {
+    const toast = await this.toastController.create({
+      message: 'Não existem mensagens!',
+      duration: 4000
+    });
+    toast.present();
+  }
   
+  async listmsgfilterToast() {
+    const toast = await this.toastController.create({
+      message: 'Mensagem não encontrada!',
+      duration: 1000
+    });
+    toast.present();
+  }
 
 
   initializeItems() {
-     this.listMsgs.getMsgs(this.id).subscribe(
+     this.listMsgs.getMsgs(this.id).then(
        (data) =>{
          this.list = data;
          this.items = this.list;
@@ -58,10 +74,15 @@ export class MensagensPage {
       })
     }
   }
+  
 
   onClear($event){
     this.list = this.items;
   }
 
+  onBlur($event){
+    this.listmsgfilterToast();
+  }
+  
 }
 
