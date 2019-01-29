@@ -46,7 +46,7 @@ export class PrincipalPage {
   }
 
   ngOnInit() {
-    this.session.get().then(user => {
+    this.session.get('user').then(user => {
       this.user = user;
       this.showNameAvatar();
       this.setPhoto();
@@ -91,7 +91,7 @@ export class PrincipalPage {
 
   openLogin() {
     this.navCtrl.setRoot(LoginPage.name);
-    this.session.remove();
+    this.session.remove('user');
   }
 
   openCamera() {
@@ -99,7 +99,7 @@ export class PrincipalPage {
   }
 
   setPhoto() {
-    this.session.getPhoto(this.user.id).then((photo) => {
+    this.session.get(this.user.id).then((photo) => {
       this.photo = photo;
       console.log(photo)
       console.log(this.photo)

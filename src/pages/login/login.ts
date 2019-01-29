@@ -88,21 +88,21 @@ export class LoginPage {
 
 
   criarSession(user) {
-    this.session.create(user)
+    this.session.set('user',user)
   }
 
   lembrarUser(){
     if (this.lembrar) {
-      this.session.setLembrar(this.user.nome)
+      this.session.set('login',this.user.nome)
     } else {
-      this.session.removerLogin();
+      this.session.remove('login');
     }
 
   }
 
   login() {
  
-    this.session.getLembrar().then((res)=>{
+    this.session.get('login').then((res)=>{
       this.name = res;
       console.log(this.name);
     }

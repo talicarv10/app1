@@ -54,12 +54,12 @@ export class CameraPage {
   }
 
   savePhoto() {
-    this.session.setPhoto(String(this.id), this.photo);
+    this.session.set(String(this.id), this.photo);
 
   }
 
   setPhoto() {
-    this.session.getPhoto(this.id).then((photo) => {
+    this.session.get(this.id).then((photo) => {
       this.photo = photo;
       console.log("camera")
       console.log(photo)

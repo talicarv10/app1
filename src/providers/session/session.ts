@@ -13,34 +13,19 @@ export class Session {
    
   }
 
-  create(user){
-    return this.storage.set('user', user);
+  set(key,dado){
+    return this.storage.set(key, dado);
   }
 
-  get(){
-    return this.storage.get('user');
+  get(key){
+    return this.storage.get(String(key));
   }
 
-  setPhoto(id,photo){
-    return this.storage.set(id,photo);
-  }
-  getPhoto(id){
-  return this.storage.get(String(id));
-  }
-  remove(){
-    this.storage.remove('user');
+  remove(key){
+    this.storage.remove(key);
   }
 
-  setLembrar(login){
-    return this.storage.set('login',login)
-  }
-  
-  getLembrar(){
-    return this.storage.get('login')
-  }
-  removerLogin(){
-    this.storage.remove('login')
-  }
+
 }
 
 
