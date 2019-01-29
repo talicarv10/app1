@@ -61,6 +61,7 @@ registerLocaleData(ptBr);
     ScreenOrientation,
     ListmsgsProvider,
     DatePipe,
+    SessionProvider,
     SessionProvider
     
   ]
