@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Keyboard } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PrincipalPage } from '../principal/principal';
 import { RestProvider } from '../../providers/rest/rest';
 import hasha from 'hasha';
+import { Session } from '../../providers/session/session';
 
 
 
@@ -32,17 +33,19 @@ export class LoginPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams, 
-    private alertCtrl: AlertController, 
+    private session:Session, 
     public restProvider: RestProvider) {
     
     
     
   }  
 
+  
+
 
   cryp(){
 
-    const hasha = require('hasha');
+   
     this.resultado = hasha(this.user.senha, { algorithm: 'sha256', encoding: 'base64'});
     console.log('resultado = ', this.resultado);
 
@@ -69,15 +72,17 @@ export class LoginPage {
         senha: this.resultado
       })
       .then((result) => {
-        this.dados = result;
-        this.navCtrl.setRoot(PrincipalPage, {'user': this.dados});  
+        //this.dados = result;
+        this.criarSession(result);
+        this.navCtrl.setRoot(PrincipalPage);  
+        
       console.log(result); 
       })
       .catch((err) => { 
       console.log(err); 
       }); 
 
-    this.navCtrl.push(PrincipalPage, {});     
+         
   
   }
 
@@ -85,4 +90,8 @@ export class LoginPage {
     console.log('ionViewDidLoad LoginPage');
   }
 
+
+ criarSession(user){
+  this.session.create(user)
+ }
 }

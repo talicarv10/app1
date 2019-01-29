@@ -1,25 +1,22 @@
 page-app {
+  ion-title.principal_title {
+    color: white;
+  }
 
-    ion-title.principal_title{
-        color: white;
-    }
+  h3.principal_subtext {
+    font-style: italic;
+  }
 
+  ion-card.principal_card {
+    height: 200px;
+    margin-bottom: 40px;
+  }
 
-    h3.principal_subtext{
-        font-style: italic;
-    }
-
-    ion-card.principal_card{
-        height: 200px;
-        margin-bottom: 40px;
-    }
-
-    
-
-    
-    
-
-    
-    
-
+  
+  ion-avatar .foto img {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 80px;
+    height: 80px;
+  }
 }

@@ -18,13 +18,17 @@
   <ion-content class="card-background-page">
 
       <ion-card>
+       <div *ngIf="photo == null">
         <img src="assets/imgs/camerabranco.png"/>
-        <div class="card-title">São Paulo</div>
-        <div class="card-subtitle">41 Listings</div>
+      </div>
+      <div *ngIf="photo != null">
+          <img src="{{photo}}"/>
+      </div>
+        
       </ion-card>
       <div class="iconcam">
-          <ion-icon class="iconcamera" name="camera"></ion-icon>
-          <ion-icon class="iconalbum" name="images"></ion-icon>
+          <ion-icon class="iconcamera" (click)="getPhoto('photo')" name="camera"></ion-icon>
+          <ion-icon class="iconalbum" (click)="getPhoto('galery')"name="images"></ion-icon>
       </div>
       
       

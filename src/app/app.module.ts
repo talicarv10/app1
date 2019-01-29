@@ -22,7 +22,9 @@ import { DatePipe } from '@angular/common';
 import {registerLocaleData } from '@angular/common'; 
 import ptBr from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
-import { SessionProvider } from '../providers/session/session';
+import { Session } from '../providers/session/session';
+import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera';
 registerLocaleData(ptBr); 
 
 
@@ -37,6 +39,7 @@ registerLocaleData(ptBr);
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     LoginPageModule,
     PrincipalPageModule,
     TitlepostPageModule,
@@ -61,8 +64,10 @@ registerLocaleData(ptBr);
     ScreenOrientation,
     ListmsgsProvider,
     DatePipe,
-    SessionProvider,
-    SessionProvider
+    Session,
+    Camera,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    
     
   ]
 })

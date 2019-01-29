@@ -2,25 +2,35 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
 
-import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
+import { Session } from '../providers/session/session';
+import { PrincipalPage } from '../pages/principal/principal';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = LoginPage;
+  rootPage:any 
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, screenOrientation: ScreenOrientation) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private session:Session) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.show();
       splashScreen.hide();
-      //screenOrientation.lock('portrait');
+      this.root();
   
     });
+  }
+
+  root(){
+     this.session.get().then(user =>{
+       if(user){
+         this.rootPage = PrincipalPage.name;
+       }else{
+         this.rootPage = LoginPage.name;
+       }
+     })
   }
 }
 
