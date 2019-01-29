@@ -30,17 +30,17 @@ export class Session {
   remove(){
     this.storage.remove('user');
   }
-  exist() {
-    this.get().then(res => {
-        console.log('User: ', res);
-        if(res) {
-            console.log("Existe Sessão")
-            return true;
-        } else {
-          console.log("Não Existe Sessão")
-            return false;
-        }
-    });
+
+  setLembrar(login){
+    return this.storage.set('login',login)
+  }
+  
+  getLembrar(){
+    return this.storage.get('login')
+  }
+  removerLogin(){
+    this.storage.remove('login')
+  }
 }
 
-}
+

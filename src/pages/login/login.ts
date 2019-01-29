@@ -25,65 +25,61 @@ import { Session } from '../../providers/session/session';
 export class LoginPage {
 
   private resultado: string;
-  public user = { nome: '', senha:''};
+  public user = { nome: '', senha: '' };
   dados;
-  
- 
+  lembrar: boolean;
+  name
+
 
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    private session:Session, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private session: Session,
     public restProvider: RestProvider) {
-    
-    
-    
-  }  
-
-  
+      this.login();
+  }
 
 
-  cryp(){
+  cryp() {
 
-   
-    this.resultado = hasha(this.user.senha, { algorithm: 'sha256', encoding: 'base64'});
+
+    this.resultado = hasha(this.user.senha, { algorithm: 'sha256', encoding: 'base64' });
     console.log('resultado = ', this.resultado);
 
   }
-  
-  formatar()
-    {
-       var login = this.user.senha;
 
-       if(this.user.senha != undefined){
-        login = login.replace(/\D/g, '');
-        this.user.senha = login;
-        console.log(this.user.senha);
-       }
+  formatar() {
+    var login = this.user.senha;
 
+    if (this.user.senha != undefined) {
+      login = login.replace(/\D/g, '');
+      this.user.senha = login;
+      console.log(this.user.senha);
     }
-    
 
-  openPrincipal(){
-    
-      this.cryp();
-      this.restProvider.saveUser({
-        login: this.user.nome, 
-        senha: this.resultado
-      })
+  }
+
+
+  openPrincipal() {
+    this.lembrarUser();
+    this.cryp();
+    this.restProvider.saveUser({
+      login: this.user.nome,
+      senha: this.resultado
+    })
       .then((result) => {
         //this.dados = result;
         this.criarSession(result);
-        this.navCtrl.setRoot(PrincipalPage);  
-        
-      console.log(result); 
-      })
-      .catch((err) => { 
-      console.log(err); 
-      }); 
+        this.navCtrl.setRoot(PrincipalPage);
 
-         
-  
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+
+
   }
 
   ionViewDidLoad() {
@@ -91,7 +87,27 @@ export class LoginPage {
   }
 
 
- criarSession(user){
-  this.session.create(user)
- }
+  criarSession(user) {
+    this.session.create(user)
+  }
+
+  lembrarUser(){
+    if (this.lembrar) {
+      this.session.setLembrar(this.user.nome)
+    } else {
+      this.session.removerLogin();
+    }
+
+  }
+
+  login() {
+ 
+    this.session.getLembrar().then((res)=>{
+      this.name = res;
+      console.log(this.name);
+    }
+    )
+  
+
+  }
 }

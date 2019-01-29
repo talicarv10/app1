@@ -19,7 +19,7 @@
   <img class="login_img" src="assets/imgs/login.jpg">
         <ion-item>
           <ion-label floating>Usuário</ion-label>
-          <ion-input type="text" [(ngModel)]="user.nome" name="nome" maxlength="20"></ion-input>
+          <ion-input type="text" [(ngModel)]="user.nome" name="nome" maxlength="20" value="{{name}}" ></ion-input>
         </ion-item>
         
       
@@ -32,7 +32,7 @@
         
         <ion-item no-lines class="check_box">
           <ion-label>Lembrar</ion-label>
-          <ion-checkbox [(ngModel)]="" color="dark" ></ion-checkbox>
+          <ion-checkbox [(ngModel)]="lembrar"  color="dark"  checked="lembrar.value" [disabled]="user.nome.length < 3 || user.senha.length < 4"></ion-checkbox>
         </ion-item>
   
 
