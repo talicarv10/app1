@@ -16,18 +16,26 @@
 // automatically applied to the <body> element in the app.
 
 ion-avatar.avatar1{
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 100px;
     background-color: teal;
+    text-align: center;
+}
+
+.scroll-content {
+    margin-top: 20px;
 }
 
 .avatarname{
     height: 100%;
-    font-size: 40px;
-    line-height: 80px;
+    font-size: 35px;
+    line-height: 70px;
     text-align: center;
 }
+
+
+
 
 p.maintext{
     white-space: normal;
@@ -69,12 +77,14 @@ p.maintext{
     background-color: orange;
 }
 
-.item-md ion-avatar ion-img,
-.item-md ion-avatar img {
+
+
+.item ion-avatar ion-img,
+.item ion-avatar img {
     border-radius: 50%;
     overflow: hidden;
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
 }
 
 .cardmain{
@@ -111,6 +121,10 @@ p.maintext{
     text-align: center;
     margin-top: 20px;
   }
+
+  button {
+    background: white;
+}
 
   .iconcamera{
     font-size: 70px;

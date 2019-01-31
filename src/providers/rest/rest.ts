@@ -12,6 +12,8 @@ import { ToastController, LoadingController } from 'ionic-angular';
 @Injectable()
 export class RestProvider {
 
+  photo: string = null;
+
   apiUrl = 'http://aulas2.getsandbox.com';
 
   constructor(public http: HttpClient, public toastController: ToastController, public loadingController: LoadingController) {
@@ -56,6 +58,13 @@ export class RestProvider {
 
     
 
+    getFotoAvatar(){
+      return this.photo;
+    }
+
+    setFotoAvatar(img){
+      return this.photo = img;
+    }
   
 
 }

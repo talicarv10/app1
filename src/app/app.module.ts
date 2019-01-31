@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPageModule } from '../pages/login/login.module';
@@ -16,12 +17,14 @@ import { DetailsPageModule } from '../pages/details/details.module';
 import { LastpostProvider } from '../providers/lastpost/lastpost';
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
-import { ScreenOrientation } from '@ionic-native/screen-orientation';
 import { ListmsgsProvider } from '../providers/listmsgs/listmsgs';
 import { DatePipe } from '@angular/common';
 import {registerLocaleData } from '@angular/common'; 
 import ptBr from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
+import { Session } from '../providers/session/session';
+import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera';
 registerLocaleData(ptBr); 
 
 
@@ -36,6 +39,7 @@ registerLocaleData(ptBr);
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     LoginPageModule,
     PrincipalPageModule,
     TitlepostPageModule,
@@ -52,14 +56,17 @@ registerLocaleData(ptBr);
   ],
   providers: [
     StatusBar,
-    SplashScreen,
+    SplashScreen, Camera,
     {provide: LOCALE_ID, useValue: 'pt-BR'},
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LastpostProvider,
     RestProvider,
-    ScreenOrientation,
     ListmsgsProvider,
-    DatePipe
+    DatePipe,
+    Session,
+    Camera,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    
     
   ]
 })

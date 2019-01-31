@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
-import { PostComponent } from '../../components/post/post';
-import { Title } from '@angular/platform-browser';
-import { analyzeAndValidateNgModules } from '@angular/compiler';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 

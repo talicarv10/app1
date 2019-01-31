@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { LastpostProvider } from '../../providers/lastpost/lastpost';
+
 
 /**
  * Generated class for the DetailsPage page.
@@ -15,15 +14,13 @@ import { LastpostProvider } from '../../providers/lastpost/lastpost';
 @Component({
   selector: 'page-details',
   templateUrl: 'details.html',
-  providers: [
-    LastpostProvider
-  ]
+ 
 })
 export class DetailsPage {
 
   public post0 = this.navParams.get('post');
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, private lastPost: LastpostProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, ) {
 
 
     

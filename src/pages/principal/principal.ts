@@ -4,12 +4,9 @@ import { MensagensPage } from '../mensagens/mensagens';
 import { TitlepostPage } from '../titlepost/titlepost';
 import { LoginPage } from '../login/login';
 import { CameraPage } from '../camera/camera';
-import { DetailsPage } from '../details/details';
-import { PostComponent } from '../../components/post/post';
 import { LastpostProvider } from '../../providers/lastpost/lastpost';
-import { executeViewHooks } from '@angular/core/src/render3/instructions';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Session } from '../../providers/session/session';
 
 /**
  * Generated class for the AppPage page.
@@ -33,28 +30,41 @@ export class PrincipalPage {
   lastname: string;
   name: string;
   result: string;
-
+  photo;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private lastPost: LastpostProvider,
-    public http: HttpClient) {
-    this.user = this.navParams.get('user');
+    public http: HttpClient,
+    private session: Session) {
     this.loadData();
-    
-    if(this.user != null){
-      this.showNameAvatar();
-    }
-    
+
+
+
 
   }
 
-  showNameAvatar() { 
-    
+  ngOnInit() {
+    this.session.get('user').then(user => {
+      this.user = user;
+      this.showNameAvatar();
+      this.setPhoto();
+    })
+  }
+
+  ionViewDidEnter(){
+    if(this.user!=null ){
+      this.setPhoto();
+    }
+   
+  }
+
+  showNameAvatar() {
+
     this.name = this.user.nome.charAt(0);
-    let sobrenome: string[] = this.user.nome.split(" ", 3);
-    this.lastname = sobrenome[2].charAt(0);
+    let sobrenome: string[] = this.user.nome.split(" ");
+    this.lastname = sobrenome[sobrenome.length - 1].charAt(0);
     this.result = this.name.concat(this.lastname);
     console.log(this.result);
   }
@@ -70,28 +80,28 @@ export class PrincipalPage {
     )
   }
 
-  
   openMensagens() {
-    this.navCtrl.push(MensagensPage, { 'id': this.user.id });
+    this.navCtrl.push(MensagensPage, {'id': this.user.id});
   }
 
   openTitlepost() {
-    this.navCtrl.push(TitlepostPage, {});
+    this.navCtrl.push(TitlepostPage.name, {});
   }
 
   openLogin() {
-    this.navCtrl.setRoot(LoginPage, {});
+    this.navCtrl.setRoot(LoginPage.name);
+    this.session.remove('user');
   }
 
   openCamera() {
-    this.navCtrl.push(CameraPage, {});
+    this.navCtrl.push(CameraPage.name, { 'id': this.user.id });
   }
 
-
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PrincipalPage');
-
+  setPhoto() {
+    this.session.get(this.user.id).then((photo) => {
+      this.photo = photo;
+      console.log(photo)
+      console.log(this.photo)
+    })
   }
-
 }

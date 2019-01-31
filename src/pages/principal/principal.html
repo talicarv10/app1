@@ -17,22 +17,21 @@
   
   <ion-item no-lines>
       <ion-avatar class="avatar1" (click)="openCamera()" item-start>
-        <div>
+        <div *ngIf="photo == null">
           <div class="avatarname">{{ result }}</div>
         </div>
+        <div *ngIf="photo != null">
+            <div class="photo"><img src="{{photo}}"></div>
+          </div>
       </ion-avatar>
 
         <div *ngIf = "user != null">
           <p class="maintext">{{ user.nome }}</p>
-        </div>
-        
-
-
-      <div class="subtext_main" *ngIf = "user != null">
-        <h3>{{ user.login }}</h3>
+        <h3 class="subtext_main">{{ user.login }}</h3>
       </div>
 
         </ion-item>
+        
         <div *ngIf = "post0 != null">
             <post [mainpost]="post0"></post> 
         </div>
