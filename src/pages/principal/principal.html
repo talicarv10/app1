@@ -16,17 +16,13 @@
 <ion-content padding>
   
   <ion-item no-lines>
-      <ion-avatar  (click)="openCamera()" item-start>       
-        <div class="avatar1">
-          <div class="avatarname" *ngIf="foto == null">
-            {{ result }}
-          </div>  
-          <div *ngIf="foto != null">
-            <img src="{{ foto }}"/>
-          </div>  
+      <ion-avatar class="avatar1" (click)="openCamera()" item-start>
+        <div *ngIf="photo == null">
+          <div class="avatarname">{{ result }}</div>
         </div>
-        
-      
+        <div *ngIf="photo != null">
+            <div class="photo"><img src="{{photo}}"></div>
+          </div>
       </ion-avatar>
 
         <div *ngIf = "user != null">

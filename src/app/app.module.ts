@@ -8,7 +8,6 @@ import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { Camera } from '@ionic-native/camera';
 import { LoginPageModule } from '../pages/login/login.module';
 import { PrincipalPageModule } from '../pages/principal/principal.module';
 import { MensagensPage } from '../pages/mensagens/mensagens';
@@ -23,6 +22,9 @@ import { DatePipe } from '@angular/common';
 import {registerLocaleData } from '@angular/common'; 
 import ptBr from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
+import { Session } from '../providers/session/session';
+import { IonicStorageModule } from '@ionic/storage';
+import { Camera } from '@ionic-native/camera';
 registerLocaleData(ptBr); 
 
 
@@ -37,6 +39,7 @@ registerLocaleData(ptBr);
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot(),
     LoginPageModule,
     PrincipalPageModule,
     TitlepostPageModule,
@@ -59,7 +62,12 @@ registerLocaleData(ptBr);
     LastpostProvider,
     RestProvider,
     ListmsgsProvider,
-    DatePipe
+    DatePipe,
+    Session,
+    Camera,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    
+    
   ]
 })
 export class AppModule {}

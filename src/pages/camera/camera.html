@@ -16,20 +16,18 @@
 <ion-content padding>
   <p class="titlecam">Selecione uma foto para o seu perfil:</p>
   <ion-content class="card-background-page">
-
-      
-       <p align="center"><img src="{{ myphoto }}"></p> 
-      
-      <div class="iconcam">
-        <button (click)="takePhoto()">
-            <ion-icon class="iconcamera" name="camera"></ion-icon>
-        </button>
-          <button (click)="getImage()">
-            <ion-icon class="iconalbum" name="images"></ion-icon>
-          </button>
+    <ion-card>
+      <div *ngIf="photo == null">
+        <img src="assets/imgs/camerabranco.png" />
       </div>
-      
-
+      <div *ngIf="photo != null">
+        <img src="{{photo}}" />
+      </div>
+    </ion-card>
+    <div class="iconcam">
+      <ion-icon class="iconcamera" (click)="getPhoto('photo')" name="camera"></ion-icon>
+      <ion-icon class="iconalbum" (click)="getPhoto('galery')" name="images"></ion-icon>
+    </div>
   </ion-content>
-
+  
 </ion-content>

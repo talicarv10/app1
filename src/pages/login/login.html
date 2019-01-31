@@ -8,37 +8,39 @@
 -->
     <ion-header>
   
-        <ion-navbar color="primary">
-          <ion-title class="login_title">SocialApp</ion-title>
-        </ion-navbar>
+  <ion-navbar color="primary">
+    <ion-title class="login_title">SocialApp</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <img class="login_img" src="assets/imgs/login.jpg">
+        <ion-item>
+          <ion-label floating>Usuário</ion-label>
+          <ion-input type="text" [(ngModel)]="user.nome" name="nome" maxlength="20"  ></ion-input>
+        </ion-item>
+        
       
-      </ion-header>
+        <ion-item>
+          <ion-label class="login_senha" floating>Senha</ion-label>
+
+          <ion-input type="tel" clearInput (keyup)="formatar()" maxlength="10" pattern="[0-9]" [(ngModel)]="user.senha" name="senha" style="-webkit-text-security:disc;"></ion-input>
+          </ion-item>
+        
+        
+        <ion-item no-lines class="check_box">
+          <ion-label>Lembrar</ion-label>
+          <ion-checkbox [(ngModel)]="lembrar"  color="dark"  checked="lembrar.value" [disabled]="user.nome.length < 3 || user.senha.length < 4"></ion-checkbox>
+        </ion-item>
+  
+
+        <button class="botaologin" ion-button block (click)="openPrincipal()" [disabled]="user.nome.length < 3 || user.senha.length < 4">LOGIN</button>
+
       
       
-      <ion-content padding>
-                  <div>
-                      <img class="login_img" src="assets/imgs/login.jpg">
-                  </div>
-                  
-                  <ion-item>
-                    <ion-label class="login_user" floating>Usuário</ion-label>
-                    <ion-input type="text" [(ngModel)]="user.nome" name="nome" maxlength="20"></ion-input>
-                  </ion-item>
-                  
-                
-                  <ion-item>
-                    <ion-label class="login_senha" floating>Senha</ion-label>
-                    <ion-input type="tel" clearInput (keyup)="formatar()" maxlength="10" pattern="[0-9]" [(ngModel)]="user.senha" name="senha" style="-webkit-text-security:disc;"></ion-input>
-                    </ion-item>
-                  
-                  
-                  <ion-item no-lines class="check_box">
-                    <ion-label>Lembrar</ion-label>
-                    <ion-checkbox color="dark" checked="true"></ion-checkbox>
-                  </ion-item>
-            
-                  <button class="botaologin" ion-button block (click)="openPrincipal()" [disabled]="user.nome.length < 3 || user.senha.length < 4">LOGIN</button>
-                  
+     
                   
                         
       
