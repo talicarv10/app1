@@ -93,7 +93,7 @@ export class LoginPage {
 
   lembrarUser(){
     if (this.lembrar) {
-      this.session.set('login',this.user.nome)
+      this.session.set('login',this.lembrar)
     } else {
       this.session.remove('login');
     }

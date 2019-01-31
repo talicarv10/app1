@@ -24,8 +24,8 @@ export class MyApp {
   }
 
   root(){
-     this.session.get('user').then(user =>{
-       if(user){
+     this.session.get('login').then(res =>{
+       if(res){
          this.rootPage = PrincipalPage.name;
        }else{
          this.rootPage = LoginPage.name;
