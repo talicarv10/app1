@@ -10,6 +10,7 @@ import { LastpostProvider } from '../../providers/lastpost/lastpost';
 import { executeViewHooks } from '@angular/core/src/render3/instructions';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
+import { RestProvider } from '../../providers/rest/rest';
 
 /**
  * Generated class for the AppPage page.
@@ -33,22 +34,27 @@ export class PrincipalPage {
   lastname: string;
   name: string;
   result: string;
+  foto;
+  img;
 
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private lastPost: LastpostProvider,
-    public http: HttpClient) {
+    public http: HttpClient,
+    public restProvider: RestProvider) {
     this.user = this.navParams.get('user');
     this.loadData();
-    
+   
     if(this.user != null){
       this.showNameAvatar();
     }
     
 
   }
+
+  
 
   showNameAvatar() { 
     
@@ -70,6 +76,13 @@ export class PrincipalPage {
     )
   }
 
+  ionViewWillEnter(){
+    this.foto = this.restProvider.getFotoAvatar();
+    // if(this.foto == null){
+
+    // }  
+  }
+ 
   
   openMensagens() {
     this.navCtrl.push(MensagensPage, { 'id': this.user.id });

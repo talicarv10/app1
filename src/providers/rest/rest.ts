@@ -10,6 +10,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class RestProvider {
 
+  photo: string = null;
+
   apiUrl = 'http://aulas2.getsandbox.com';
 
   constructor(public http: HttpClient) {
@@ -26,6 +28,13 @@ export class RestProvider {
     });
     }
 
+    getFotoAvatar(){
+      return this.photo;
+    }
+
+    setFotoAvatar(img){
+      return this.photo = img;
+    }
   
 
 }

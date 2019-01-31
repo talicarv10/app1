@@ -5,8 +5,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { Camera } from '@ionic-native/camera';
 import { LoginPageModule } from '../pages/login/login.module';
 import { PrincipalPageModule } from '../pages/principal/principal.module';
 import { MensagensPage } from '../pages/mensagens/mensagens';
@@ -21,7 +23,6 @@ import { DatePipe } from '@angular/common';
 import {registerLocaleData } from '@angular/common'; 
 import ptBr from '@angular/common/locales/pt';
 import { LOCALE_ID } from '@angular/core';
-import { CameraOriginal } from '@ionic-native/camera';
 registerLocaleData(ptBr); 
 
 
@@ -52,9 +53,8 @@ registerLocaleData(ptBr);
   ],
   providers: [
     StatusBar,
-    SplashScreen, 
+    SplashScreen, Camera,
     {provide: LOCALE_ID, useValue: 'pt-BR'},
-    CameraOriginal,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     LastpostProvider,
     RestProvider,

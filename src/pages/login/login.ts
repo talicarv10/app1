@@ -77,7 +77,7 @@ export class LoginPage {
       console.log(err); 
       }); 
 
-    this.navCtrl.push(PrincipalPage, {});     
+    this.navCtrl.setRoot(PrincipalPage, {});     
   
   }
 

@@ -17,16 +17,17 @@
   <p class="titlecam">Selecione uma foto para o seu perfil:</p>
   <ion-content class="card-background-page">
 
-      <ion-card>
-        <img src="assets/imgs/camerabranco.png"/>
-        <div class="card-title">São Paulo</div>
-        <div class="card-subtitle">41 Listings</div>
-      </ion-card>
-      <div class="iconcam">
-          <ion-icon class="iconcamera" name="camera"></ion-icon>
-          <ion-icon class="iconalbum" name="images"></ion-icon>
-      </div>
       
+       <p align="center"><img src="{{ myphoto }}"></p> 
+      
+      <div class="iconcam">
+        <button (click)="takePhoto()">
+            <ion-icon class="iconcamera" name="camera"></ion-icon>
+        </button>
+          <button (click)="getImage()">
+            <ion-icon class="iconalbum" name="images"></ion-icon>
+          </button>
+      </div>
       
 
   </ion-content>

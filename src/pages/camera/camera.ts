@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { CameraOriginal, CameraOptions } from '@ionic-native/camera';
-
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { PrincipalPage } from '../principal/principal';
+import { RestProvider } from '../../providers/rest/rest';
 
 /**
  * Generated class for the CameraPage page.
@@ -16,30 +17,46 @@ import { CameraOriginal, CameraOptions } from '@ionic-native/camera';
   templateUrl: 'camera.html',
 })
 export class CameraPage {
-
   myphoto: any;
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public cameraOriginal: CameraOriginal) {
-    }
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public camera: Camera, public restProvider: RestProvider) {
+  }
 
-  takePhoto(){
+  takePhoto() {
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.cameraOriginal.DestinationType.FILE_URI,
-      encodingType: this.cameraOriginal.EncodingType.JPEG,
-      mediaType: this.cameraOriginal.MediaType.PICTURE
+      destinationType: this.camera.DestinationType.FILE_URI,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
     }
-    
-    this.cameraOriginal.getPicture(options).then((imageData) => {
-     // imageData is either a base64 encoded string or a file URI
-     // If it's base64 (DATA_URL):
-     this.myphoto = 'data:image/jpeg;base64,' + imageData;
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      this.myphoto = 'data:image/jpeg;base64,' + imageData;
+    })
+  }
+
+  getImage() {
+    const options: CameraOptions = {
+      quality: 70,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      saveToPhotoAlbum: false
+    }
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      this.myphoto = 'data:image/jpeg;base64,' + imageData;
+      this.restProvider.setFotoAvatar(this.myphoto);
     }, (err) => {
-     // Handle error
+      // Handle error
     });
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CameraPage');
