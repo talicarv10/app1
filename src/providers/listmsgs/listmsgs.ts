@@ -36,7 +36,7 @@ export class ListmsgsProvider {
 
 async msgsToast(err: any) {
   const toast = await this.toastController.create({
-    message: 'Conecte-se à internet!',
+    message: 'Erro!',
     duration: 4000
   });
   toast.present();
