@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { MensagensPage } from '../mensagens/mensagens';
 import { TitlepostPage } from '../titlepost/titlepost';
 import { LoginPage } from '../login/login';
@@ -7,6 +7,7 @@ import { CameraPage } from '../camera/camera';
 import { LastpostProvider } from '../../providers/lastpost/lastpost';
 import { HttpClient } from '@angular/common/http';
 import { Session } from '../../providers/session/session';
+import { LoadedModule } from 'ionic-angular/umd/util/module-loader';
 
 /**
  * Generated class for the AppPage page.
@@ -37,7 +38,7 @@ export class PrincipalPage {
     public navParams: NavParams,
     private lastPost: LastpostProvider,
     public http: HttpClient,
-    private session: Session) {
+    private session: Session, private loadingController: LoadingController, private toastController: ToastController) {
     this.loadData();
 
 
@@ -61,24 +62,40 @@ export class PrincipalPage {
   }
 
   showNameAvatar() {
-
-    this.name = this.user.nome.charAt(0);
-    let sobrenome: string[] = this.user.nome.split(" ");
-    this.lastname = sobrenome[sobrenome.length - 1].charAt(0);
-    this.result = this.name.concat(this.lastname);
-    console.log(this.result);
-  }
+    if (this.user != null){
+      this.name = this.user.nome.charAt(0);
+      let sobrenome: string[] = this.user.nome.split(" ");
+      this.lastname = sobrenome[sobrenome.length - 1].charAt(0);
+      this.result = this.name.concat(this.lastname);
+      console.log(this.result);
+    }
+    }
+  
 
 
 
   loadData() {
     this.lastPost.getLastpost().then(
       (data) => {
+        this.presentLoading(data);
         this.post0 = data
         console.log(this.post0);
-      }
-    )
+      }, error=>{
+        let toast = this.toastController.create({
+          message: error.message,
+          duration: 3000
+        });
+        toast.present();
+      });
   }
+  
+  async presentLoading(data: any) {
+    const loading = await this.loadingController.create({
+      duration: 1000
+    });
+    return await loading.present();
+  }
+  
 
   openMensagens() {
     this.navCtrl.push(MensagensPage, {'id': this.user.id});
@@ -98,10 +115,13 @@ export class PrincipalPage {
   }
 
   setPhoto() {
-    this.session.get(this.user.id).then((photo) => {
-      this.photo = photo;
-      console.log(photo)
-      console.log(this.photo)
-    })
-  }
+    if (this.user != null){
+      this.session.get(this.user.id).then((photo) => {
+        this.photo = photo;
+        console.log(photo)
+        console.log(this.photo)
+      })
+    }
+    }
+   
 }

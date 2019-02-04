@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { ListmsgsProvider } from '../../providers/listmsgs/listmsgs';
 
 /**
@@ -21,44 +21,49 @@ export class MensagensPage {
   
   items;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public listMsgs: ListmsgsProvider, public toastController: ToastController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public listMsgs: ListmsgsProvider, public toastController: ToastController, private loadingController: LoadingController) {
     this.initializeItems();
-    if (this.list == null){
-      this.listmsgToast();
-    }
     
   }
 
-  async listmsgToast() {
-    const toast = await this.toastController.create({
-      message: 'Não existem mensagens!',
-      duration: 4000
-    });
-    toast.present();
-  }
   
-  async listmsgfilterToast() {
-    const toast = await this.toastController.create({
-      message: 'Mensagem não encontrada!',
-      duration: 1000
-    });
-    toast.present();
-  }
 
 
   initializeItems() {
      this.listMsgs.getMsgs(this.id).then(
-       (data) =>{
-         this.list = data;
-         this.items = this.list;
-         console.log('msg page:' + this.id);
-         console.log(this.list)
+       (data: any) =>{
+        this.presentLoading(data);
+         if(data.erro){
+          let toast = this.toastController.create({
+            message: data.erro.mensagem,
+            duration: 3000
+          });
+          toast.present();
+         } else {
+          this.list = data;
+          this.items = this.list;
+          console.log('msg page:' + this.id);
+          console.log(this.list)
+         }
        }, error=>{
+        let toast = this.toastController.create({
+          message: error.message,
+          duration: 3000
+        });
+        toast.present();
          console.log(error)
        }
      );
       
   }
+
+  async presentLoading(data: any) {
+    const loading = await this.loadingController.create({
+      duration: 1000
+    });
+    return await loading.present();
+  }
+
 
   getItems(ev) {
     // Reset items back  all of the items
@@ -81,7 +86,7 @@ export class MensagensPage {
   }
 
   onBlur($event){
-    this.listmsgfilterToast();
+   
   }
   
 }

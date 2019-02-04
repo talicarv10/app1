@@ -20,8 +20,13 @@
 <ion-content padding>
 
         <ion-list no-lines>
-        <ion-item *ngFor="let item of list">
-            {{ item }}
+        <div *ngIf="list != null">
+            <ion-item *ngFor="let item of list">
+                {{ item }}
+            </ion-item>
+        </div>
+        <ion-item *ngIf="!list.length">
+          Mensagem não encontrada.
         </ion-item>
         </ion-list>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { PrincipalPage } from '../principal/principal';
 import { RestProvider } from '../../providers/rest/rest';
 import hasha from 'hasha';
@@ -28,14 +28,15 @@ export class LoginPage {
   public user = { nome: '', senha: '' };
   dados;
   lembrar: boolean;
-  name
+  name;
+  
 
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private session: Session,
-    public restProvider: RestProvider) {
+    public restProvider: RestProvider, private toastCtrl: ToastController, private loadingController: LoadingController) {
      
   }
 
@@ -68,19 +69,46 @@ export class LoginPage {
       senha: this.resultado
     })
       .then((result) => {
-        //this.dados = result;
+        this.presentLoading(result);
+        this.confirmToast(result);
         this.criarSession(result);
         this.navCtrl.setRoot(PrincipalPage);
 
         console.log(result);
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error: any) => {
+        if (error.message){
+          let toast = this.toastCtrl.create({
+            message: error.message,
+            duration: 3000
+          });
+          toast.present();
+        } else {
+          console.log(error);
+        let toast = this.toastCtrl.create({
+          message: error.error.erro.mensagem,
+          duration: 3000
+        });
+        toast.present();
+        }
+        
       });
+    }
 
+    async confirmToast(result: any) {
+      const toast = await this.toastCtrl.create({
+        message: 'Você está logado!',
+        duration: 4000
+      });
+      toast.present();
+    }
 
-
-  }
+    async presentLoading(result: any) {
+      const loading = await this.loadingController.create({
+        duration: 1000
+      });
+      return await loading.present();
+    }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');

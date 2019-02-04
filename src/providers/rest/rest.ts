@@ -22,41 +22,13 @@ export class RestProvider {
 
   saveUser(data) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.apiUrl+'/login', data).subscribe(res => {
-          this.presentLoading(res);
-          this.confirmToast(res);
+      this.http.post(this.apiUrl+'/login', data).subscribe(res => {          
           resolve(res);
         }, (err) => {
-          this.loginToast(err);
           reject(err);
         });
     });
     }
-
-    async presentLoading(res: any) {
-      const loading = await this.loadingController.create({
-        duration: 1000
-      });
-      return await loading.present();
-    }
-
-    async loginToast(err: any) {
-      const toast = await this.toastController.create({
-        message: 'Erro!',
-        duration: 4000
-      });
-      toast.present();
-    }
-
-    async confirmToast(res: any) {
-      const toast = await this.toastController.create({
-        message: 'Você está logado!',
-        duration: 4000
-      });
-      toast.present();
-    }
-
-    
 
     getFotoAvatar(){
       return this.photo;

@@ -34,10 +34,7 @@ export class TitlepostPage {
     ]
     
     this.loadData();
-    if (this.posts == null){
-    
-    }
-
+  
   }
 
   loadData(){
@@ -47,24 +44,12 @@ export class TitlepostPage {
       this.presentLoading(result);
       this.posts = result;
     }), (error: any) =>{
-      this.erroToast(error);
+      let toast = this.toastController.create({
+        message: error.message,
+        duration: 3000
+      });
+      toast.present();
     });
-  }
-
-  async postsToast() {
-    const toast = await this.toastController.create({
-      message: 'Não existem posts!',
-      duration: 4000
-    });
-    toast.present();
-  }
-
-  async erroToast(error: any) {
-    const toast = await this.toastController.create({
-      message: 'Conecte-se à internet!',
-      duration: 4000
-    });
-    toast.present();
   }
 
   async presentLoading(result: any) {

@@ -18,5 +18,8 @@
 
 
 <ion-content padding>
-      <post [mainpost]="post" *ngFor="let post of posts"></post>
+      <div *ngIf="posts != null">
+          <post [mainpost]="post" *ngFor="let post of posts"></post>
+      </div>
+      <p *ngIf="posts == null">Não existem posts!</p>
 </ion-content>

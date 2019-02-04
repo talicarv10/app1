@@ -20,28 +20,13 @@ export class LastpostProvider {
 getLastpost(){
   return new Promise ((resolve, reject) => {
     this.http.get(this.baseApiPath + "/last_post").subscribe(res => {
-      this.presentLoading(res);
       resolve(res);
     }, (err) =>{
-      this.postToast(err);
-      reject(err);
+       reject(err);
     });
 });
 }
 
-async postToast(err: any) {
-  const toast = await this.toastController.create({
-    message: 'Conecte-se à internet!',
-    duration: 4000
-  });
-  toast.present();
-}
 
-async presentLoading(res: any) {
-  const loading = await this.loadingController.create({
-    duration: 1000
-  });
-  return await loading.present();
-}
 
 }
